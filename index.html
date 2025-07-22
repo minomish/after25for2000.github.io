@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
      <style>
+        .hidden { display: none !important; }
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -21,27 +22,69 @@
                 transform: translateY(0);
             }
         }
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            gap: 8px;
+        }
+
+        .language-switcher button {
+            background-color: rgba(245, 245, 220, 0.8);
+            border: 1px solid #DAA520;
+            color: #8B4513;
+            padding: 6px 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-switcher button:hover {
+            background-color: #DAA520;
+            color: #F5F5DC;
+            transform: scale(1.05);
+        }
+
+        .language-switcher button:active {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
+    <div class="language-switcher">
+        <button onclick="setLanguage('ru')">RU</button>
+        <button onclick="setLanguage('kz')">KZ</button>
+    </div>
     <section class="hero fade-in">
         <div class="vintage-pattern"></div>
         <div class="hero-content">
             <div class="vintage-frame">
                 <div class="ornament-line"></div>
-                <h1>Добро пожаловать<br>на нашу встречу!</h1>
+                <h1 class="lang lang-ru">Добро пожаловать<br>на нашу встречу!</h1>
+                <h1 class="lang lang-kz hidden">Қош келіңіздер!<br />Кездесуімізге!</h1>
                 <div class="heart-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="#f5f5dc"/>
                     </svg>
                 </div>
                 <div class="event-details">
-                    <p class="reunion-title">25-летняя встреча выпускников</p>
+                    <p class="reunion-title lang lang-ru">25-летняя встреча выпускников</p>
+                    <p class="reunion-title lang lang-kz hidden">Мектеп бітіргенімізге 25 жыл</p>
                     <p class="class-year">2000 года</p>
                 </div>
                 <div class="ornament-line"></div>
-                <p class="hero-description">
+                <p class="hero-description lang lang-ru">
                     Спустя четверть века мы снова встречаемся, чтобы вспомнить школьные годы и поделиться новостями из нашей взрослой жизни.
+                </p>
+                <p class="hero-description lang lang-kz hidden">
+                    Ширек ғасыр өткен соң қайта кездесіп, мектеп жылдарын еске алып, ересек өмірдегі жаңалықтармен бөлісеміз.
                 </p>
             </div>
         </div>
@@ -49,7 +92,8 @@
 
     <section class="event-info fade-in">
         <div class="container">
-            <h2>Детали мероприятия</h2>
+            <h2 class="lang lang-ru">Детали мероприятия</h2>
+            <h2 class="lang lang-kz hidden">Іс-шара туралы мәлімет</h2>
             
             <div class="info-cards">
                 <div class="info-card date-card">
@@ -62,7 +106,8 @@
                         </svg>
                     </div>
                     <div class="info-content">
-                        <h3>Дата</h3>
+                        <h3 class="lang lang-ru">Дата</h3>
+                        <h3 class="lang lang-kz hidden">Күні</h3>
                         <p>26.07.2025</p>
                     </div>
                 </div>
@@ -75,7 +120,8 @@
                         </svg>
                     </div>
                     <div class="info-content">
-                        <h3>Время</h3>
+                        <h3 class="lang lang-ru">Время</h3>
+                        <h3 class="lang lang-kz hidden">Уақыты</h3>
                         <p>18:00 - 23:00</p>
                     </div>
                 </div>
@@ -88,21 +134,9 @@
                         </svg>
                     </div>
                     <div class="info-content">
-                        <h3>Место</h3>
+                        <h3 class="lang lang-ru">Место</h3>
+                        <h3 class="lang lang-kz hidden">Өтетін орны</h3>
                         <p>Ресторан "MAULEN"<br>кабинка VIP 2<br>Ул. Жамбыла 53</p>
-                    </div>
-                </div>
-                
-                <!-- Dress Code Card -->
-                <div class="info-card dress-card">
-                    <div class="icon-circle vintage-gold">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5" stroke="white" stroke-width="2" fill="none"/>
-                        </svg>
-                    </div>
-                    <div class="info-content">
-                        <h3>Дресс-код</h3>
-                        <p>Просто приходите<br>главное одетыми</p>
                     </div>
                 </div>
             </div>
@@ -111,7 +145,8 @@
 
     <section class="memories fade-in">
         <div class="container">
-            <h2>Воспоминания</h2>
+            <h2 class="lang lang-ru">Воспоминания</h2>
+            <h2 class="lang lang-kz hidden">Естеліктер</h2>
             <div class="photo-slider">
                 <div class="photo-card">
                     <img src="./11А.JPG" alt="Школьный класс">
@@ -132,68 +167,92 @@
     <section class="rsvp">
         <div class="container">
             <div class="rsvp-header">
-                <h2>Подтверждение участия</h2>
+                <h2 class="lang lang-ru">Подтверждение участия</h2>
+                <h2 class="lang lang-kz hidden">Қатысуды растау</h2>
             </div>
             
             <div class="form-card">
                 <form id="rsvp-form" class="rsvp-form">
                     <!-- Name -->
                     <div class="form-group">
-                        <label for="name">
-                            <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#DAA520" stroke-width="2" fill="none"/>
-                                <circle cx="12" cy="7" r="4" stroke="#DAA520" stroke-width="2" fill="none"/>
-                            </svg>
-                            Полное имя *
-                        </label>
-                        <input type="text" id="name" name="entry.281454489" placeholder="Иван Иванович Иванов" required>
+                    <label for="name" class="lang lang-ru">
+                        <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#DAA520" stroke-width="2" fill="none" />
+                        <circle cx="12" cy="7" r="4" stroke="#DAA520" stroke-width="2" fill="none" />
+                        </svg>
+                        Полное имя *
+                    </label>
+                    <label for="name" class="lang lang-kz hidden">
+                        <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#DAA520" stroke-width="2" fill="none" />
+                        <circle cx="12" cy="7" r="4" stroke="#DAA520" stroke-width="2" fill="none" />
+                        </svg>
+                        Толық аты-жөні *
+                    </label>
+                    <input type="text" id="name" name="entry.281454489" placeholder="Иван Иванович Иванов" required />
                     </div>
-                    
+
                     <!-- Attendance -->
                     <div class="form-group">
-                        <label class="main-label">
-                            <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#DAA520" stroke-width="2" fill="none"/>
-                                <polyline points="22,4 12,14.01 9,11.01" stroke="#DAA520" stroke-width="2"/>
-                            </svg>
-                            Участие *
-                        </label>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="yes" name="entry.641635853" value="Да, обязательно приду!" checked>
-                                <label for="yes">Да, приду один!</label>
-                            </div>
-                             <div class="radio-option">
-                                <input type="radio" id="yesPlus" name="entry.641635853" value="Да, приду я и +1">
-                                <label for="yes">Да, приду я и +1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="maybe" name="entry.641635853" value="Пока не уверен(а)">
-                                <label for="maybe">Пока не уверен(а)</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="no" name="entry.641635853" value="К сожалению, не смогу">
-                                <label for="no">К сожалению, не смогу</label>
-                            </div>
+                    <label class="main-label lang lang-ru">
+                        <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#DAA520" stroke-width="2" fill="none" />
+                        <polyline points="22,4 12,14.01 9,11.01" stroke="#DAA520" stroke-width="2" />
+                        </svg>
+                        Участие *
+                    </label>
+                    <label class="main-label lang lang-kz hidden">
+                        <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#DAA520" stroke-width="2" fill="none" />
+                        <polyline points="22,4 12,14.01 9,11.01" stroke="#DAA520" stroke-width="2" />
+                        </svg>
+                        Қатысу *
+                    </label>
+
+                    <div class="radio-group">
+                        <div class="radio-option">
+                        <input type="radio" id="yes" name="entry.641635853" value="Да, обязательно приду!" checked />
+                        <label for="yes" class="lang lang-ru">Да, приду один!</label>
+                        <label for="yes" class="lang lang-kz hidden">Иә, жалғыз келемін</label>
+                        </div>
+                        <div class="radio-option">
+                        <input type="radio" id="yesPlus" name="entry.641635853" value="Да, приду я и +1" />
+                        <label for="yesPlus" class="lang lang-ru">Да, приду я и +1</label>
+                        <label for="yesPlus" class="lang lang-kz hidden">Иә, мен және +1 келеміз</label>
+                        </div>
+                        <div class="radio-option">
+                        <input type="radio" id="maybe" name="entry.641635853" value="Пока не уверен(а)" />
+                        <label for="maybe" class="lang lang-ru">Пока не уверен(а)</label>
+                        <label for="maybe" class="lang lang-kz hidden">Әлі нақты білмеймін</label>
+                        </div>
+                        <div class="radio-option">
+                        <input type="radio" id="no" name="entry.641635853" value="К сожалению, не смогу" />
+                        <label for="no" class="lang lang-ru">К сожалению, не смогу</label>
+                        <label for="no" class="lang lang-kz hidden">Өкінішке орай, келе алмаймын</label>
                         </div>
                     </div>
-                    
+                    </div>
+
                     <button type="submit" class="submit-btn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="22" y1="2" x2="11" y2="13" stroke="white" stroke-width="2"/>
-                            <polygon points="22,2 15,22 11,13 2,9 22,2" stroke="white" stroke-width="2" fill="white"/>
-                        </svg>
-                        Отправить подтверждение
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="22" y1="2" x2="11" y2="13" stroke="white" stroke-width="2" />
+                        <polygon points="22,2 15,22 11,13 2,9 22,2" stroke="white" stroke-width="2" fill="white" />
+                    </svg>
+                    <span class="lang lang-ru">Отправить подтверждение</span>
+                    <span class="lang lang-kz hidden">Қатысуды жіберу</span>
                     </button>
+
                     <div id="successMessage" class="success-message hidden">
-                        <div class="success-content">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#4ade80" stroke-width="2" fill="none"/>
-                                <polyline points="22,4 12,14.01 9,11.01" stroke="#4ade80" stroke-width="2"/>
-                            </svg>
-                            <h3>Спасибо за подтверждение!</h3>
-                            <p>Ваш ответ получен. До встречи на празднике!</p>
-                        </div>
+                    <div class="success-content">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#4ade80" stroke-width="2" fill="none" />
+                        <polyline points="22,4 12,14.01 9,11.01" stroke="#4ade80" stroke-width="2" />
+                        </svg>
+                        <h3 class="lang lang-ru">Спасибо за подтверждение!</h3>
+                        <h3 class="lang lang-kz hidden">Қатысуды растағаныңыз үшін рақмет!</h3>
+                        <p class="lang lang-ru">Ваш ответ получен. До встречи на празднике!</p>
+                        <p class="lang lang-kz hidden">Жауабыңыз қабылданды. Кездескенше!</p>
+                    </div>
                     </div>
                 </form>
             </div>
@@ -230,9 +289,27 @@
     </section>
     <footer class="footer">
         <div class="footer__content">
-            <p class="footer__text">© 2000 – 2025. Встреча выпускников</p>
-            <p class="footer__text">До скорой встречи! 🥂</p>
+            <p class="footer__text lang lang-ru">© 2000 – 2025. Встреча выпускников</p>
+            <p class="footer__text lang lang-kz hidden">© 2000 – 2025. Мектеп түлектерінің кездесуі</p>
+            <p class="footer__text lang lang-ru">До скорой встречи! 🥂</p>
+            <p class="footer__text lang lang-kz hidden">Жақын арада кездескенше! 🥂</p>
         </div>
     </footer> 
+    <script>
+    function setLanguage(lang) {
+      document.querySelectorAll('.lang').forEach(el => {
+        el.classList.add('hidden');
+      });
+      document.querySelectorAll('.lang-' + lang).forEach(el => {
+        el.classList.remove('hidden');
+      });
+      localStorage.setItem('selectedLang', lang);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem('selectedLang') || 'ru';
+      setLanguage(savedLang);
+    });
+  </script>
 </body>
 </html>
